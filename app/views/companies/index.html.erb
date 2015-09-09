@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>List of companies</title>
+</head>
+<body>
+  <h1>List of companies</h1>
+  <table>
+  	<th>
+  		<tr>
+  			<td></td>
+  			<td>Name</td>
+  			<td>Employees</td>
+  			<td>Stock Position</td>
+  			<td>HeadQuarters</td>
+  			<td>Edit</td>
+  			<td>Delete</td>
+  		</tr>
+  	</th>
+  	<tbody>
+  		<% count = 1 %>
+  		<% @companies.each do |company| %>
+  		<tr>
+  			<td><%= count %></td>
+  			<td><%= company.company_name %></td>
+  			<td><%= company.employees %></td>
+  			<td><%= company.stock_position %></td>
+  			<td><%= company.company_hq %></td>
+  			<td>Edit</td>
+  			<td>Delete</td>
+  		</tr>
+  		<% count += 1 %>
+  		<% end %>
+  	</tbody>
+  </table>
+</body>
+</html>
