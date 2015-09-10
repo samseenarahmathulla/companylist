@@ -5,22 +5,22 @@ class CompaniesController < ApplicationController
  end
  
  def new
-   
+   @company = Company.new()
  end
  
  def create
-  @new_company = Company.new(company_params)
-  @new_company.save
+  @company = Company.new(company_params)
+  @company.save
   redirect_to companies_path
  end
  
  def edit
-   @edit_company = Company.find(params[:id])
+   @company = Company.find(params[:id])
  end
  
   def update
-    @edit_company = Company.find(params[:id])
-    if @edit_company.update(company_params)
+    @company = Company.find(params[:id])
+    if @company.update(company_params)
       redirect_to companies_path
     else 
       render 'edit'
@@ -28,8 +28,8 @@ class CompaniesController < ApplicationController
   end
   
   def destroy
-    @del_company = Company.find(params[:id])
-    @del_company.destroy
+    @company = Company.find(params[:id])
+    @company.destroy
     redirect_to companies_path
   end
  
