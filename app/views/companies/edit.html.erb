@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Edit company</title>
+</head>
+<body>
+<h2>Edit Company</h2>
+<%= form_for @edit_company, url: company_path, patch: :update do |f| %>
+  <p>
+    <%= f.label :company_name %>
+    <%= f.text_field :company_name %>
+  </p>
+  <p>
+    <%= f.label :company_hq %>
+    <%= f.text_area :company_hq %>
+  </p>
+  <p>
+    <%= f.label :ceo %>
+    <%= f.text_field :ceo %>
+  </p>
+  <p>
+    <%= f.label :employees %>
+    <%= f.text_area :employees %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+</body>
+</html>

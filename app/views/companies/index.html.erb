@@ -10,6 +10,7 @@
   		<tr>
   			<td></td>
   			<td>Name</td>
+  			<td>CEO</td>
   			<td>Employees</td>
   			<td>Stock Position</td>
   			<td>HeadQuarters</td>
@@ -23,11 +24,13 @@
   		<tr>
   			<td><%= count %></td>
   			<td><%= company.company_name %></td>
+  			<td><%= company.ceo %></td>
   			<td><%= company.employees %></td>
   			<td><%= company.stock_position %></td>
   			<td><%= company.company_hq %></td>
-  			<td>Edit</td>
-  			<td>Delete</td>
+  			<td><%= link_to "Edit", edit_company_path(company) %></td>
+  			<td><%= link_to "Delete", company_path(company), method: :delete, data: { confirm: 'Are you sure?' }  %></td>
+  			
   		</tr>
   		<% count += 1 %>
   		<% end %>
