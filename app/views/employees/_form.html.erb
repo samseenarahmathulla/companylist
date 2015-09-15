@@ -1,0 +1,24 @@
+<%= form_for @company_employee do |f| %>
+  <p>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :age %>
+    <%= f.text_area :age %>
+  </p>
+  <p>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </p>
+  <p>
+    <%= f.label :company %>
+    <%= f.text_area :company, value: "1" %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+  <p>
+  	<%= link_to "Back", "" %>
+  </p>
+<% end %>

@@ -34,3 +34,16 @@ company_list.each do |company_name, company_hq, ceo, employees, revenue, stock_p
                   status: status
                 )
 end
+
+employee_list = [
+  ["Shamsi", "shamsi@gmail.com", 20, 1 ],
+  ["Shivas", "shivas@gmail.com", 30, 2 ],
+  ["Zayaanu", "zayaan@gmail.com", 2, 1 ]
+]
+employee_list.each do |name, email, age, company_id|
+  Employee.create( name: name,
+                   email: email,
+                   age: age,
+                   company_id: company_id
+                  )
+end

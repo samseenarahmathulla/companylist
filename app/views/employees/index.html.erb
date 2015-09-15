@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>List of employees</title>
+</head>
+<body>
+  <h1>List of employees</h1>
+  <h3><%= link_to "Add New Employee", new_company_employee_path(params[:company_id]) %></h3>
+  <table>
+  	<th>
+  		<tr>
+  			<td></td>
+  			<td>Name</td>
+  			<td>Age</td>
+  			<td>Email</td>
+  			<td>Company</td>
+  			<td>Edit</td>
+  			<td>Delete</td>
+  		</tr>
+  	</th>
+  	<tbody>
+  		<% count = 1 %>
+  		<% @company_employees.each do |company_employee| %>
+  		<tr>
+  			<td><%= count %></td>
+  			<td><%= company_employee.name %></td>
+  			<td><%= company_employee.age %></td>
+  			<td><%= company_employee.email %></td>
+  			<td><%= company_employee.company_id %></td>
+  			<td><%= link_to "Edit", edit_company_employee_path(company_employee.company_id, company_employee.id) %></td>
+  			<td><%= link_to "Delete", company_employee_path(company_employee.company_id, company_employee.id), method: :delete %></td>
+  		</tr>
+  		<% count += 1 %>
+  		<% end %>
+  	</tbody>
+  </table>
+  <%= link_to "Back", companies_path %>
+</body>
+</html>

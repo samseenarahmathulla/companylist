@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Add New Employee</title>
+</head>
+<body>
+<h2>Add New Employee</h2>
+<%= form_for :company_employee, url: company_employees_path(), method: :post do |f| %>
+  <p>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :age %>
+    <%= f.text_area :age %>
+  </p>
+  <p>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </p>
+  <p>
+    <%= f.label "Company" %>
+    <%= f.text_field :company_id, value: "#{params[:company_id]}" %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+  <p>
+  	<%= link_to "Back", company_employees_path %>
+  </p>
+<% end %>
+
+</body>
+</html>

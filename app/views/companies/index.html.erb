@@ -15,6 +15,7 @@
   			<td>Employees</td>
   			<td>Stock Position</td>
   			<td>HeadQuarters</td>
+  			<td>Employees List</td>
   			<td>Edit</td>
   			<td>Delete</td>
   		</tr>
@@ -29,6 +30,7 @@
   			<td><%= company.employees %></td>
   			<td><%= company.stock_position %></td>
   			<td><%= company.company_hq %></td>
+  			<td><%= link_to "Employee List", company_employees_path(company) %></td>
   			<td><%= link_to "Edit", edit_company_path(company) %></td>
   			<td><%= link_to "Delete", company_path(company), method: :delete, data: { confirm: 'Are you sure?' }  %></td>
   			
