@@ -13,4 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
+/*Step 1: Remove the tree directive
+
+Let’s stop Rails from loading all our assets into every page.
+
+Simply remove the //= require_tree . line from application.js and the *= require_tree . line from application.css. */

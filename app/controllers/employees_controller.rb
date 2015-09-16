@@ -2,7 +2,7 @@ class EmployeesController < ApplicationController
  
  def index
    @company_id = params[:company_id]
-   @company_employees = Employee.where("company_id = '#{@company_id}'") 
+   @company_employees = Employee.where("company_id = '#{@company_id}'").paginate(:page => params[:page])
  end
  
  def new

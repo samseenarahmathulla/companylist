@@ -1,7 +1,8 @@
 class CompaniesController < ApplicationController
  
  def index
-   @companies = Company.all
+   # @companies = Company.all
+   @companies = Company.paginate(:page => params[:page])  #per page 10 is given in model.
  end
  
  def new

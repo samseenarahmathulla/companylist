@@ -10,6 +10,12 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
  *= require_self
  */
+/*
+ Step 1: Remove the tree directive
+
+Let’s stop Rails from loading all our assets into every page.
+
+Simply remove the //= require_tree . line from application.js and the *= require_tree . line from application.css.
+*/
