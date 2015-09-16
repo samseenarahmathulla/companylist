@@ -1,4 +1,17 @@
-<%= form_for @company_employee do |f| %>
+<%= form_for @company_employee, url: company_employee_path() do |f| %>
+  <% if @company_employee.errors.any? %>
+    <div id="error_explanation" style="color: red;">
+      <h2>
+        <%= pluralize(@company_employee.errors.count, "error") %> prohibited
+        this employee from being saved:
+      </h2>
+      <ul>
+        <% @company_employee.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
   <p>
     <%= f.label :name %>
     <%= f.text_field :name %>
@@ -11,14 +24,14 @@
     <%= f.label :email %>
     <%= f.text_field :email %>
   </p>
-  <p>
-    <%= f.label :company %>
-    <%= f.text_area :company, value: "1" %>
+  <p>
+    <%= f.label "Company" %>
+	<%= f.collection_select(:company_id, @companies, :id, :company_name ) %>
   </p>
   <p>
     <%= f.submit %>
   </p>
   <p>
-  	<%= link_to "Back", "" %>
+  	<%= link_to "Back", company_employees_path %>
   </p>
 <% end %>

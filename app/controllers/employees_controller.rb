@@ -7,24 +7,30 @@ class EmployeesController < ApplicationController
  
  def new
    @company_employee = Employee.new()
-   @company_name = Company.find(params[:company_id]).company_name
+   @companies = Company.all
  end
  
  def create
-  @employee = Employee.new(employee_params)
-  @employee.save
-  redirect_to company_employees_path
+  @company_employee = Employee.new(employee_params)
+  @companies = Company.all
+  if @company_employee.save
+    redirect_to company_employees_path
+  else
+    render 'new'
+  end
  end
  
  def edit
    #edit_company_employee GET    /companies/:company_id/employees/:id/edit(.:format) employees#edit
+   # @sql = "select * from employees join companies on companies.id = employees.company_id where employees.id = #{params[:id]} and companies.id = #{params[:company_id]};"
    @company_employee = Employee.find(params[:id])
-   @company_name = Company.find(params[:company_id]).company_name
+   @companies = Company.all
  end
  
   def update
-    @employee = Employee.find(params[:id])
-    if @employee.update(employee_params)
+    @company_employee = Employee.find(params[:id])
+    @companies = Company.all
+    if @company_employee.update(employee_params)
       redirect_to company_employees_path
     else 
       render 'edit'
@@ -32,14 +38,14 @@ class EmployeesController < ApplicationController
   end
   
   def destroy
-    @employee = Employee.find(params[:id])
-    @employee.destroy
+    @company_employee = Employee.find(params[:id])
+    @company_employee.destroy
     redirect_to company_employees_path
   end
  
 private
 def employee_params
-  params.require(:company_employee).permit(:name, :age, :email, :company_id)
+  params.require(:employee).permit(:name, :age, :email, :company_id)
 end
 end
 

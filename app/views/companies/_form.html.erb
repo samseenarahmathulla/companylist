@@ -1,4 +1,17 @@
 <%= form_for @company do |f| %>
+  <% if @company.errors.any? %>
+    <div id="error_explanation" style="color: red;">
+      <h2>
+        <%= pluralize(@company.errors.count, "error") %> prohibited
+        this company from being saved:
+      </h2>
+      <ul>
+        <% @company.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
   <p>
     <%= f.label :company_name %>
     <%= f.text_field :company_name %>
@@ -12,8 +25,8 @@
     <%= f.text_field :ceo %>
   </p>
   <p>
-    <%= f.label :employees %>
-    <%= f.text_area :employees %>
+    <%= f.label :number_of_employees %>
+    <%= f.text_area :number_of_employees %>
   </p>
   <p>
     <%= f.submit %>

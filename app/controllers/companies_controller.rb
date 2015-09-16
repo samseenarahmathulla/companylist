@@ -10,8 +10,11 @@ class CompaniesController < ApplicationController
  
  def create
   @company = Company.new(company_params)
-  @company.save
-  redirect_to companies_path
+  if @company.save
+    redirect_to companies_path
+  else
+    render 'new'
+  end
  end
  
  def edit
@@ -35,7 +38,7 @@ class CompaniesController < ApplicationController
  
 private
 def company_params
-  params.require(:company).permit(:company_name, :company_hq, :ceo, :employees, :stock_position)
+  params.require(:company).permit(:company_name, :company_hq, :ceo, :number_of_employees, :stock_position)
 end
 end
 
