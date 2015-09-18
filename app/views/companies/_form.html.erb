@@ -12,25 +12,21 @@
       </ul>
     </div>
   <% end %>
-  <p>
+  <div>
     <%= f.label :company_name %>
     <%= f.text_field :company_name %>
-  </p>
-  <p>
+  </div><br />
+  <div>
     <%= f.label :company_hq %>
     <%= f.text_area :company_hq %>
-  </p>
-  <p>
+  </div><br />
+  <div>
     <%= f.label :ceo %>
     <%= f.text_field :ceo %>
-  </p>
-  <p>
-    <%= f.label :number_of_employees %>
-    <%= f.text_area :number_of_employees %>
-  </p>
-  <p>
+  </div><br />
+  <div>
     <%= f.submit %>
-  </p>
+  </div>
   <p>
   	<%= link_to "Back", companies_path %>
   </p>

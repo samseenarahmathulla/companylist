@@ -1,5 +1,7 @@
 class CompaniesController < ApplicationController
  
+ before_filter :must_be_admin, except: [:index]
+ 
  def index
    # @companies = Company.all
    @companies = Company.paginate(:page => params[:page])  #per page 10 is given in model.
@@ -41,6 +43,13 @@ private
 def company_params
   params.require(:company).permit(:company_name, :company_hq, :ceo, :number_of_employees, :stock_position)
 end
+
+def must_be_admin
+  unless current_user && current_user.admin?
+    redirect_to root_path, notice: "No Admin Rights"
+  end
+end
+  
 end
 
 

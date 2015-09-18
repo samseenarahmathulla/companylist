@@ -46,3 +46,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # Me - Pagination gem
 gem 'will_paginate', '~> 3.0.6'
+#Devise Gem - Authentication https://github.com/plataformatec/devise
+gem 'devise'

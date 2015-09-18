@@ -15,5 +15,5 @@ Rails.application.config.assets.version = '1.0'
   # Rails.application.config.assets.precompile += ["#{controller}.js.coffee", "#{controller}.css"]
 # end
 %w( companies employees ).each do |controller|
-  Rails.application.config.assets.precompile += ["#{controller}.js.coffee", "#{controller}.css"]
+  Rails.application.config.assets.precompile += ["#{controller}.js", "#{controller}.css"]
 end

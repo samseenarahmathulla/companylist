@@ -2,15 +2,15 @@
 <html>
 <head>
   <title>CompanyList</title>
-  <!-- <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %> -->
   <!-- controller specific css and js -->
   <%= stylesheet_link_tag "application", params[:controller], :media => "all" %>
   <%= javascript_include_tag "application", params[:controller] %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<!-- #NEW! for devise -->
+<p class="notice"><%= notice %></p
+<p class="alert"><%= alert %></p>
 <%= yield %>
 
 </body>

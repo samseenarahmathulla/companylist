@@ -5,44 +5,7 @@
 </head>
 <body>
 <h2>Add New Employee</h2>
-<%= form_for @company_employee, url: company_employees_path() do |f| %>
-  <% if @company_employee.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= pluralize(@company_employee.errors.count, "error") %> prohibited
-        this employee from being saved:
-      </h2>
-      <ul>
-        <% @company_employee.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-  
-  <p>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :age %>
-    <%= f.text_area :age %>
-  </p>
-  <p>
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-  </p>
-  <p>
-    <%= f.label "Company" %>
-    <%= f.collection_select(:company_id, @companies, :id, :company_name ) %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
-  <p>
-  	<%= link_to "Back", company_employees_path %>
-  </p>
-<% end %>
+<%= render 'form', :locals => { :url => company_employees_path() } %> 
 
 </body>
 </html>

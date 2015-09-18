@@ -5,6 +5,6 @@
 </head>
 <body>
 <h2>Edit Employee</h2>
-<%= render 'form'  %>
+<%= render 'form', :locals => { :url => company_employee_path() } %>
 </body>
 </html>

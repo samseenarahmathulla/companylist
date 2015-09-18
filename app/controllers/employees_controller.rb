@@ -1,4 +1,6 @@
 class EmployeesController < ApplicationController
+
+ before_filter :must_be_admin, except: [:index]
  
  def index
    @company_id = params[:company_id]
@@ -13,7 +15,10 @@ class EmployeesController < ApplicationController
  def create
   @company_employee = Employee.new(employee_params)
   @companies = Company.all
-  if @company_employee.save
+  if @company_employee.save  
+    # #update num of employees in companies when an employee is added
+    # @sum_of_emp = Employee.where(company_id: @company_employee.company_id).count;
+    # Company.update(@company_employee.company_id, number_of_employees: @sum_of_emp)
     redirect_to company_employees_path
   else
     render 'new'
@@ -21,8 +26,6 @@ class EmployeesController < ApplicationController
  end
  
  def edit
-   #edit_company_employee GET    /companies/:company_id/employees/:id/edit(.:format) employees#edit
-   # @sql = "select * from employees join companies on companies.id = employees.company_id where employees.id = #{params[:id]} and companies.id = #{params[:company_id]};"
    @company_employee = Employee.find(params[:id])
    @companies = Company.all
  end
@@ -47,6 +50,17 @@ private
 def employee_params
   params.require(:employee).permit(:name, :age, :email, :company_id)
 end
+
+def company_emp_params
+  params.require(:company).permit(:number_of_employees)
+end
+
+def must_be_admin
+  unless current_user && current_user.admin?
+    redirect_to root_path, notice: "No Admin Rights"
+  end
+end
+
 end
 
 
