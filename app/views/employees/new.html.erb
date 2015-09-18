@@ -4,8 +4,10 @@
   <title>Add New Employee</title>
 </head>
 <body>
-<h2>Add New Employee</h2>
-<%= render 'form', :locals => { :url => company_employees_path() } %> 
-
+	<div style="width: 50%;float: left;">
+  		<h2>Add New Employee</h2>
+  	</div>
+  	<%= render "user_logged_in" %>
+	<%= render 'form', :locals => { :url => company_employees_path() } %> 
 </body>
 </html>

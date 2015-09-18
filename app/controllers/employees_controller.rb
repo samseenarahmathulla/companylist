@@ -5,6 +5,7 @@ class EmployeesController < ApplicationController
  def index
    @company_id = params[:company_id]
    @company_employees = Employee.where("company_id = '#{@company_id}'").paginate(:page => params[:page])
+   @company_name = Company.find(@company_id).company_name 
  end
  
  def new
@@ -16,9 +17,6 @@ class EmployeesController < ApplicationController
   @company_employee = Employee.new(employee_params)
   @companies = Company.all
   if @company_employee.save  
-    # #update num of employees in companies when an employee is added
-    # @sum_of_emp = Employee.where(company_id: @company_employee.company_id).count;
-    # Company.update(@company_employee.company_id, number_of_employees: @sum_of_emp)
     redirect_to company_employees_path
   else
     render 'new'

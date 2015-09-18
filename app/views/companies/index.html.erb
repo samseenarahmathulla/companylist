@@ -4,8 +4,11 @@
   <title>List of companies</title>
 </head>
 <body>
-  <h1>List of companies</h1>
-  <h3><%= link_to "Add New Company", new_company_path %></h3>
+  <div style="width: 50%;float: left;">
+  	<h1>List of companies</h1>
+  	<h3><%= link_to "Add New Company", new_company_path %></h3>
+  </div>
+  <%= render "user_logged_in" %>
   <table cellspacing='0'>
     <thead>
   		<tr>
@@ -30,7 +33,7 @@
   			<td><%= company.employees.count %></td>
   			<td><%= company.stock_position %></td>
   			<td><%= company.company_hq %></td>
-  			<td><% if company.employees.count != 0 %><%= link_to "Employee List", company_employees_path(company) %><% else %>-<% end %></td>
+  			<td><%= link_to "Employee List", company_employees_path(company) %></td>
   			<td><%= link_to "Edit", edit_company_path(company) %></td>
   			<td><%= link_to "Delete", company_path(company), method: :delete, data: { confirm: 'Are you sure?' }  %></td>
   			
